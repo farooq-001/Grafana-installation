@@ -9,4 +9,4 @@
 #  Install Node Exporter 
 "http://localhost:9100/metrics"
 
-# sudo systemctl status  grafana-server  prometheus node_exporter
+sudo systemctl status  grafana-server  prometheus node_exporter
