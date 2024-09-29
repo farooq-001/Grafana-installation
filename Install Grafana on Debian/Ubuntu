@@ -1,0 +1,26 @@
+####### Step 1: Add Grafana APT Repository #######
+
+# Install dependencies
+sudo apt-get install -y software-properties-common
+
+# Add the Grafana repository
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+
+# Add Grafana GPG key
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+
+###### Step 2: Install Grafana ########
+
+sudo apt-get update
+sudo apt-get install grafana
+
+###### Step 3: Start and Enable Grafana Service #######
+
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+
+####### Step 4: Access Grafana #######
+echo "Open a web browser and go to: http://localhost:3000"
+echo "Default login credentials:"
+echo "Username: admin"
+echo "Password: admin"
