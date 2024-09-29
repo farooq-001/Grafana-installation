@@ -1,0 +1,30 @@
+# Download Prometheus
+wget https://github.com/prometheus/prometheus/releases/download/v2.45.0/prometheus-2.45.0.linux-amd64.tar.gz
+
+# Extract and move to /opt
+tar -xvf prometheus-*.tar.gz
+sudo mv prometheus-2.45.0.linux-amd64 /opt/prometheus
+
+# Start Prometheus
+# cd /opt/prometheus
+# ./prometheus --config.file=prometheus.yml
+
+# create service file
+sudo vi /etc/systemd/system/prometheus.service
+
+[Service]
+ExecStart=/opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus.yml
+Restart=always
+RestartSec=10
+Environment=TMPDIR=/tmp
+
+# starte service
+sudo systemctl daemon-reload
+sudo systemctl enable prometheus
+sudo systemctl start prometheus
+
+# check
+http://localhost:9090/
+
+
+
