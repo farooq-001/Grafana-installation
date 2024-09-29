@@ -1,0 +1,26 @@
+###### Step 1: Add Grafana YUM Repository ######
+
+# Add the Grafana YUM repository
+sudo tee /etc/yum.repos.d/grafana.repo <<EOF
+[grafana]
+name=Grafana Repository
+baseurl=https://packages.grafana.com/oss/rpm
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.grafana.com/gpg.key
+EOF
+
+##### Step 2: Install Grafana ######
+sudo yum install grafana  # For CentOS/RHEL
+sudo dnf install grafana  # For Fedora
+
+###### Step 3: Start and Enable Grafana Service #####
+sudo systemctl start grafana-server
+sudo systemctl enable grafana-server
+
+##### Step 4: Access Grafana #####
+echo "Open a web browser and go to: http://localhost:3000
+echo "Default login credentials:"
+echo "Username: admin"
+echo "Password: admin"
